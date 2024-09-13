@@ -14,10 +14,12 @@ def scrape_restaurants(url):
         soup = BeautifulSoup(response.text,'html.parser')
        
         restaurants = soup.find_all("div", class_= re.compile("^articleContent _articleContent"))
-
-        for item in restaurants:
-            title = item.find("h3", class_= re.compile("^_h3_cuogz"))
-            print(title)
+        titles = soup.find_all("h3", class_= re.compile("^_h3_cuogz"))
+        for item in titles:
+            span = item.find("span")
+            if span:
+                item = item.text.strip()
+                print(item)
            # tags = item.find("ul", class_= re.compile("^_tagsList"))
            # cuisine = tags.find("li", class_=re.compile("^_tag_"))
         
