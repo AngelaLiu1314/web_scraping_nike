@@ -65,7 +65,8 @@ def main():
                 display_restaurant(title, tags, url, rating)
             elif choice == 'n':
                 print('Hope you found a restaurant you like!')
-
+    else:
+        print("an error occured: no restaurants found")
 
 if __name__ == "__main__":
     main()
