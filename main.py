@@ -51,7 +51,7 @@ def main():
     restaurants = scrape_restaurants(url)
 
     if restaurants:
-        print("Top 50 Restaurnts in New York City")
+        print("Top 50 Restaurants in New York City")
         for (title, tags, url, rating) in restaurants:
             display_restaurant(title, tags, url, rating)
             

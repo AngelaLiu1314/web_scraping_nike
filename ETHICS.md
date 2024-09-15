@@ -1,0 +1,3 @@
+This program was created for educational purposes only where the main purpose was to teach us how to use Beautiful Soup to gather information from websites.
+
+This program is not intended to be a substitute to reading the work of Timeout's writers. While the program makes summarizing the information easier, the url to Timeout's review for specific restaurants is included in the scraped data sp users can learn more about the restaurant if they want.
