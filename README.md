@@ -19,7 +19,7 @@ The purpose of this program is to:
 3. Allows users to ask for a random recommendation from the list until they find a restaurant they want to go to.
 
 ## Prerequisites
-1. Install all libraries listed in the `requirements.txt` file using pip.
+1. Pip Install all libraries listed in the `requirements.txt` file.
 
 ## Usage
 - Run the program to receive the entire list of 50 restaurants.
