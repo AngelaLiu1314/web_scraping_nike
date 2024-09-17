@@ -2,28 +2,28 @@ import requests
 import re
 from bs4 import BeautifulSoup
 import random
-
+#scrape_restaurants is to use beautiful soup to get all the information from the website first, such as the restaurant title and location.
 def scrape_restaurants(url):
     try:
-        response = requests.get(url)
+        response = requests.get(url)#used to test that the url works and can be retrived by the code.
 
         if response.status_code != 200:
             print(f'failed to get the webpage: {response.status_code}')
             return []
         
-        soup = BeautifulSoup(response.text,'html.parser')
+        soup = BeautifulSoup(response.text,'html.parser')#variable to use beatiful soup on the title_tags variable
        
         title_tags = soup.find_all("h3", class_= re.compile("^_h3_cuogz")) #use regex to find h3 tag with class name beginning with _h3_cuogz
         restaurants = []
         for title_tag in title_tags: 
             # ignore titles without span tag since they could be ads
             if title_tag.span:
-                title = title_tag.text.strip()
+                title = title_tag.text.strip()#restaurant title
                 article_tag = title_tag.find_parent("article") 
                 tag_items = article_tag.find_all("li", class_="tag_item")
                 tags =  [tag.text.strip() for tag in tag_items]
                 link = title_tag.find_parent('a')
-                url = link.get('href')      
+                url = link.get('href')#restaurant url      
                 rating_tag = article_tag.find("div", class_=re.compile("^_rating_")) #use regex to find rating tag with class name beginning with _rating_
                 rating = 'None'
                 if rating_tag: 
@@ -35,7 +35,7 @@ def scrape_restaurants(url):
     except Exception as e:
         print(f'An error has occured: {e}')
         return []
-
+#This section is to format all the information gotten from the website
 def display_restaurant(title, tags, url, rating):
     
     print (title)
@@ -44,7 +44,7 @@ def display_restaurant(title, tags, url, rating):
     print (f'\tRating: {rating}')
     print (f'\tURL: https://www.timeout.com{url}')
 
-
+#print the completed list of restaurants and allow users to ask for a random recommendation.
 def main():
     url = "https://www.timeout.com/newyork/restaurants/100-best-new-york-restaurants"
 
